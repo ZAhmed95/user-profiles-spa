@@ -13,7 +13,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
   $routeProvider.otherwise({redirectTo: '/'});
 }]).
-run(function($rootScope){
+run(['$rootScope', '$location', function($rootScope, $location){
   // simulates the mongoDB store for now
   $rootScope.users = {
     // seed data
@@ -45,4 +45,10 @@ run(function($rootScope){
     }
   }
   $rootScope.session = session;
-});
+
+  // check if a user session already exists
+  if (session.get('user')){
+    // if so, redirect to the profile page
+    $location.path('/profile');
+  }
+}]);
