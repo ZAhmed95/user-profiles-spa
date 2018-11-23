@@ -23,11 +23,12 @@ function($scope, $location, $http) {
   // take the user from the DB and assign it to current session
   // this function gets called upon both successful signup and login
   $scope.newSession = function(user){
-    $scope.session.user = {
+    let sessionUser = {
       username: user.n,
       age: user.a,
       avatarID: user.i
     };
+    $scope.session.set('user', sessionUser);
   }
 
   // for signup

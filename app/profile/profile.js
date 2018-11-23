@@ -10,12 +10,13 @@ angular.module('userProfilesSPA.profile', ['ngRoute'])
 }])
 
 .controller('ProfileCtrl', ['$scope', '$location', function($scope, $location) {
-  let user = $scope.session.user;
+  let user = $scope.session.get('user');
   // can't access this page without first logging in
   if (!user){
     $location.path('/login');
     return;
   }
+  $scope.user = user;
   // create the avatar url
   user.avatarURL = (user.avatarID) ? `/avatars/${user.avatarID}` : '/images/default_avatar.jpg';
 }]);

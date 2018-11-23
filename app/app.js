@@ -24,6 +24,25 @@ run(function($rootScope){
     }
   }
   // global session variable
-  // TODO: use SessionStore instead
-  $rootScope.session = {}
+  // Use localStorage if available, otherwise just an object
+  let session = {};
+  if (localStorage){
+    session.set = (key, value)=>{
+      localStorage.setItem(key, JSON.stringify(value));
+    }
+    session.get = (key)=>{
+      let value = localStorage.getItem(key);
+      return JSON.parse(value);
+    }
+  }
+  else {
+    // if localStorage is not available, use a standard object
+    session.set = (key, value)=>{
+      session[key] = value;
+    }
+    session.get = (key)=>{
+      return session[key];
+    }
+  }
+  $rootScope.session = session;
 });

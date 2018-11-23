@@ -1,11 +1,11 @@
 <label> username </label>
-<h2> {{ session.user.username }}</h2>
+<h2> {{ user.username }}</h2>
 <hr>
 <label> age </label>
-<h2> {{ session.user.age }} </h2>
+<h2> {{ user.age }} </h2>
 <hr>
 <label> avatar </label>
-<img src="{{ session.user.avatarURL }}" alt="user avatar" class="w-100">
+<img src="{{ user.avatarURL }}" alt="user avatar" class="w-100">
 <div class="row mt-3">
   <div class="col col-md-6 offset-md-3">
       <a href="#!/logout" role="button" class="btn btn-danger w-100">Logout</a>
