@@ -1,23 +1,28 @@
 <form action="#" id="user-form">
-  <label for="username">
-    Username <br/>
+  <label for="username" class="w-100">
+    username <br/>
     <input type="text" name="username" ng-model="username"> <br/>
     <span>{{ errors.username }}</span>
   </label> <br/>
-  <label for="age">
-    Age <br/>
+  <label for="age" class="w-100">
+    age <br/>
     <input type="number" name="age" ng-model="age"> <br/>
     <span>{{ errors.age }}</span>
   </label> <br/>
 
-  <label for="avatar">
-    Avatar <br/>
+  <label for="avatar" class="w-100">
+    avatar <br/>
     <input type="file" name="avatar" onchange="angular.element(this).scope().fileChanged(this)"> <br/>
     <span>{{ errors.avatar }}</span>
   </label> <br />
   <!-- TODO: make avatar preview work -->
   <!-- <img src="images/default_avatar.jpg" alt="user avatar preview"> -->
-  <hr>
-  <input type="button" value="Sign up" ng-click="signup()">
+  <div class="row">
+    <div class="col col-md-6">
+        <input type="button" class="btn btn-primary w-100" value="Sign up" ng-click="signup()">
+    </div>
+    <div class="col col-md-6">
+        <a href="/" role="button" class="btn btn-secondary w-100">Back</a>
+    </div>
+  </div>
 </form>
-<a href="#!/">Back</a>

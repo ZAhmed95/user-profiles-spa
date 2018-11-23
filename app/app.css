@@ -3,3 +3,42 @@
 form span {
   color: red;
 }
+
+body {
+  background: #f0f0f0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn-primary {
+  background-color: blueviolet;
+}
+
+.btn-primary:hover {
+  background-color: rgb(76, 18, 131);
+}
+
+.content-container {
+  border: 2px solid blueviolet;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 100px;
+  padding: 30px 60px 10px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+input[type=text], input[type=number] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid blueviolet;
+}
+
+label {
+  color: rgb(76, 18, 131);
+}
+
+hr {
+  border-color: blueviolet;
+}
