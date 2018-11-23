@@ -147,14 +147,4 @@ function($scope, $location, $http) {
       }
     )
   }
-
-  // for logout
-  $scope.endSession = function(){
-    delete $scope.session.user;
-  }
-
-  $scope.logout = function(){
-    $scope.endSession();
-    $location.path('/');
-  }
 }]);

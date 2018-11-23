@@ -9,7 +9,7 @@ angular.module('userProfilesSPA.profile', ['ngRoute'])
   });
 }])
 
-.controller('ProfileCtrl', ['$scope', '$location', function($scope, $location) {
+.controller('ProfileCtrl', ['$scope', '$location', '$rootScope', function($scope, $location, $rootScope) {
   let user = $scope.session.get('user');
   // can't access this page without first logging in
   if (!user){

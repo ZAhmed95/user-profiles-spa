@@ -14,15 +14,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.otherwise({redirectTo: '/'});
 }]).
 run(['$rootScope', '$location', function($rootScope, $location){
-  // simulates the mongoDB store for now
-  $rootScope.users = {
-    // seed data
-    'zia': {
-      username: 'zia',
-      age: 23,
-      avatar: 'images/avatar1.jpg'
-    }
-  }
   // global session variable
   // Use localStorage if available, otherwise just an object
   let session = {};
@@ -34,6 +25,9 @@ run(['$rootScope', '$location', function($rootScope, $location){
       let value = localStorage.getItem(key);
       return JSON.parse(value);
     }
+    session.remove = (key)=>{
+      localStorage.removeItem(key);
+    }
   }
   else {
     // if localStorage is not available, use a standard object
@@ -43,8 +37,24 @@ run(['$rootScope', '$location', function($rootScope, $location){
     session.get = (key)=>{
       return session[key];
     }
+    session.remove = (key)=>{
+      delete session[key];
+    }
   }
   $rootScope.session = session;
+
+  // NOTE: the code for logging a user out below should NOT be here,
+  // it should be in a service that maintains user session.
+  // this is a hotfix.
+
+  // for logout
+  $rootScope.endSession = function(){
+    session.remove('user');
+  }
+  $rootScope.logout = function(){
+    $rootScope.endSession();
+    $location.path('/');
+  }
 
   // check if a user session already exists
   if (session.get('user')){
